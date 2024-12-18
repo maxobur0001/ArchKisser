@@ -1,0 +1,16 @@
+[media]
+command=playerctl metadata -f "  {{artist}} - {{title}}" -p spotify -F
+interval=persist
+
+[network]
+command=~/.config/i3blocks/blocks/network
+interval=20
+markup=pango
+
+[volume]
+command=awk -F"[][]" '/Left:/ { print "󰕾 " $2 }' <(amixer sget Master)
+interval=1
+
+[clock]
+command=date +%T
+interval=1

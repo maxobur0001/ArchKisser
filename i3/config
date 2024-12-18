@@ -1,0 +1,168 @@
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+### Variables
+#
+font pango:JetbrainsMono Nerd Font 10.5
+# Logo key. Use Mod1 for Alt
+set $mod Mod4
+# Your preferred terminal emulator
+set $terminal kitty
+set $browser qutebrowser
+# Your preferred application launcher
+set $menu rofi -show drun
+
+### Output configuration
+#
+#Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaper.png
+#Picom
+exec --no-startup-id picom
+#KB Layout
+exec --no-startup-id setxkbmap -layout us,ru
+exec --no-startup-id setxkbmap -option 'grp:ctrl_space_toggle'
+
+### Key bindings
+#
+# Basics:
+#
+    # Start a terminal
+    bindsym $mod+t exec $terminal
+    bindsym $mod+b exec $browser
+
+    # Kill focused window
+    bindsym $mod+q kill
+
+    # Start your launcher
+    bindsym $mod+space exec $menu
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod
+
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaymsg exit
+    default_border pixel 0
+    default_floating_border pixel 0
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+Shift+Left focus left
+    bindsym $mod+Shift+Down focus down
+    bindsym $mod+Shift+Up focus up
+    bindsym $mod+Shift+Right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Left move left
+    bindsym $mod+Down move down
+    bindsym $mod+Up move up
+    bindsym $mod+Right move right
+#
+# Workspaces:
+#
+    bindsym $mod+Ctrl+1 workspace number 1
+    bindsym $mod+Ctrl+2 workspace number 2
+    bindsym $mod+Ctrl+3 workspace number 3
+    bindsym $mod+Ctrl+4 workspace number 4
+    bindsym $mod+Ctrl+5 workspace number 5
+    bindsym $mod+Ctrl+6 workspace number 6
+    bindsym $mod+Ctrl+7 workspace number 7
+    bindsym $mod+Ctrl+8 workspace number 8
+    bindsym $mod+Ctrl+9 workspace number 9
+    bindsym $mod+Ctrl+0 workspace number 10
+    bindsym $mod+Ctrl+Left workspace prev
+    bindsym $mod+Ctrl+Right workspace next
+
+    # move focused container to workspace
+    bindsym $mod+1 move container to workspace number 1; workspace number 1
+    bindsym $mod+2 move container to workspace number 2; workspace number 2
+    bindsym $mod+3 move container to workspace number 3; workspace number 3
+    bindsym $mod+4 move container to workspace number 4; workspace number 4
+    bindsym $mod+5 move container to workspace number 5; workspace number 5
+    bindsym $mod+6 move container to workspace number 6; workspace number 6
+    bindsym $mod+7 move container to workspace number 7; workspace number 7
+    bindsym $mod+8 move container to workspace number 8; workspace number 8
+    bindsym $mod+9 move container to workspace number 9; workspace number 9
+    bindsym $mod+0 move container to workspace number 10; workspace number 10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+s splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+g fullscreen
+    bindsym $mod+f floating toggle; resize set 800 600
+    bindsym $mod+c move position center
+
+    # Move focus to the parent container
+    bindsym $mod+a focus parent
+    gaps inner 30
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+h move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+h scratchpad show
+#
+# Utilities:
+#
+    # Special keys to adjust volume via PulseAudio
+    bindsym XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -1%
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +1%
+    bindsym XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+    bindsym XF86AudioPlay exec playerctl play-pause
+    bindsym XF86AudioPrev exec playerctl previous
+    bindsym XF86AudioNext exec playerctl next
+
+    # Special keys to adjust brightness via brightnessctl
+    bindsym XF86MonBrightnessDown exec brightnessctl set 1%-
+    bindsym XF86MonBrightnessUp exec brightnessctl set 1%+
+    # Special key to take a screenshot with grim
+    bindsym Print exec maim | xclip -selection clipboard -t image/png
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    position top
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    status_command i3blocks
+
+    colors {
+        statusline #cdd6f4
+        background #1e1e2e
+        focused_workspace #89b4fa	#89b4fa	#1e1e2e
+        inactive_workspace #1e1e2e #1e1e2e #cdd6f4
+    }
+    separator_symbol "  "
+}

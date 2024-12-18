@@ -1,0 +1,39 @@
+[global]
+    width = (0,500)
+    origin = "top-center"
+
+    progress_bar_min_width = 200
+    progress_bar_max_width = 200
+
+    padding = 10
+    horizontal_padding = 10
+    frame_width = 2
+    gap_size = 2
+    corner_radius = 20
+    font = "JetbrainsMono Nerd Font 13"
+
+    icon_theme = "Colloid-Catppuccin"
+    enable_recursive_icon_lookup = true
+    max_icon_size = 72
+    icon_corner_radius = 20
+
+    background = "#1e1e2e"
+    foreground = "#cdd6f4"
+
+[urgency_low]
+    highlight = "#9399b2"
+    frame_color = "#9399b2"
+
+[urgency_normal]
+    highlight = "#89b4fa"
+    frame_color = "#89b4fa"
+
+[urgency_critical]
+    highlight = "#f38ba8"
+    frame_color = "#f38ba8"
+
+[service]
+    appname = service
+    timeout = 1s
+    urgency = low
+    alignment = center

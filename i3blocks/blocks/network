@@ -1,0 +1,11 @@
+#!/bin/bash
+
+status=$(nmcli general | awk 'FNR == 2 { print $1 }')
+
+if [[ $status == 'connected' ]]; then
+  interface=`ip -o link show up | awk -F': ' '{print $2}' | grep -v lo`
+  
+  echo "<span foreground='#e0def4'>󰤨  ${interface}</span>"
+else
+  echo '<span foreground="#eb6f92">󰤭 </span>'
+fi
