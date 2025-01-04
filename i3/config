@@ -41,7 +41,7 @@ gaps top 30
 exec --no-startup-id polybar
 
 # - Wallpaper with feh - #
-exec --no-startup-id feh --bg-scale $wallpaper
+exec --no-startup-id feh --bg-fill $wallpaper
 
 # - Effects with picom - #
 exec --no-startup-id picom
@@ -144,5 +144,6 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 1%-
 bindsym XF86MonBrightnessUp exec brightnessctl set 1%+
 
 # - Take a screenshot - #
-bindsym Print exec maim | xclip -selection clipboard -t image/png
+bindsym Shift+$mod+3 exec maim | xclip -selection clipboard -t image/png
+bindsym Shift+$mod+4 exec maim -s | feh -s -
 

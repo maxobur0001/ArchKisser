@@ -1,5 +1,5 @@
 [global]
-    width = (0,500)
+    width = (0,300)
     origin = "top-center"
     offset = (0,100)
 
@@ -7,35 +7,50 @@
     progress_bar_max_width = 1000
     progress_bar_corner_radius = 5
 
-    padding = 10
-    horizontal_padding = 10
-    frame_width = 1
+    padding = 12
+    separator_height = 0
+    horizontal_padding = 12
+    frame_width = 2
     gap_size = 2
     corner_radius = 20
-    font = "JetbrainsMono Nerd Font 13"
+    font = "JetbrainsMono Nerd Font 11"
 
     icon_theme = "Colloid-Catppuccin"
     enable_recursive_icon_lookup = true
-    max_icon_size = 72
+    max_icon_size = 81
     icon_corner_radius = 20
 
     background = "#1e1e2e"
     foreground = "#cdd6f4"
 
 [urgency_low]
-    highlight = "#9399b2"
+    foreground = "#a6adc8"
     frame_color = "#9399b2"
+    highlight = "#9399b2"
 
 [urgency_normal]
-    highlight = "#89b4fa"
     frame_color = "#89b4fa"
+    highlight = "#89b4fa"
 
 [urgency_critical]
-    highlight = "#f38ba8"
     frame_color = "#f38ba8"
+    highlight = "#f38ba8"
 
 [service]
-    appname = service
-    timeout = 1s
-    urgency = low
-    alignment = center
+  appname = service
+  timeout = 1s
+  urgency = low
+  alignment = center
+
+[spotify]
+  appname=Spotify
+  foreground = "#cdd6f4"
+  frame_color = "#89b4fa"
+  highlight = "#89b4fa"
+
+[battery]
+  appname = battery
+  timeout = 60s
+  urgency = critical
+  alignment = center
+  min_icon_size = 54

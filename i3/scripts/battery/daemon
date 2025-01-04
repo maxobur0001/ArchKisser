@@ -1,0 +1,11 @@
+#!/bin/bash
+
+while true; do
+  battery=`acpi | sed -nE "s/.+Discharging, ([0-9]+)%.+/\1/p"`
+  if [ $battery -lt 16 ]; then 
+    notify-send -a battery -u critical -i "battery-low-symbolic" "15% battery\!" "Connect charging device"
+  elif [ $battery -lt 6 ]; then
+    notify-send -a battery -u critical "5% battery\!" "Immediatly connect charging device"
+  fi
+  sleep 1
+done
