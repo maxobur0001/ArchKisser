@@ -18,6 +18,7 @@ set $scripts ~/.config/i3/scripts
 set $terminal kitty
 set $browser zen-browser
 set $menu rofi -show drun
+set $powermenu ~/.config/rofi/bin/powermenu
 
 
 ######################
@@ -30,7 +31,7 @@ default_floating_border pixel 0
 
 # - Gaps - #
 gaps inner 30
-gaps top 10
+gaps top 50
 
 
 #####################
@@ -46,11 +47,11 @@ exec --no-startup-id feh --bg-fill $wallpaper
 # - Effects with picom - #
 exec --no-startup-id picom
 
+# - Notifications with dunst - #
+exec --no-startup-id dunst
+
 # - Russian keyboard with setxkbmap - #
 exec --no-startup-id "setxkbmap -layout us,ru -option 'grp:ctrl_space_toggle'"
-
-# - Autotiling with https://github.com/nwg-piotr/autotiling - #
-exec --no-startup-id python ~/.config/i3/autotiling/main.py
 
 
 ####################
@@ -59,13 +60,18 @@ exec --no-startup-id python ~/.config/i3/autotiling/main.py
 
 # - Run apps - #
 bindsym $mod+t exec $terminal
-bindsym $mod+b exec $browser
 
 # - Kill focused window - #
 bindsym $mod+q kill
 
 # - Launcher - #
 bindsym $mod+space exec $menu
+
+# - Power menu - #
+bindsym $mod+p exec $powermenu
+
+# - Polybar switch - #
+bindsym $mod+b exec $scripts/bar-hide/barhide.sh
 
 # - Modifier for resize and move windows - #
 floating_modifier $mod
@@ -77,22 +83,22 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec i3-msg exit
 
 # - Switch between windows - #
-bindsym Ctrl+Shift+$mod+Left focus left
-bindsym Ctrl+Shift+$mod+Down focus down
-bindsym Ctrl+Shift+$mod+Up focus up
-bindsym Ctrl+Shift+$mod+Right focus right
+bindsym Ctrl+Shift+$mod+h focus left
+bindsym Ctrl+Shift+$mod+j focus down
+bindsym Ctrl+Shift+$mod+k focus up
+bindsym Ctrl+Shift+$mod+l focus right
 
 # - Move windows - #
-bindsym $mod+Left move left
-bindsym $mod+Down move down
-bindsym $mod+Up move up
-bindsym $mod+Right move right
+bindsym $mod+h move left
+bindsym $mod+j move down
+bindsym $mod+k move up
+bindsym $mod+l move right
 
 # - Move windows faster - #
-bindsym Shift+$mod+Left move left 96
-bindsym Shift+$mod+Down move down 96
-bindsym Shift+$mod+Up move up 96
-bindsym Shift+$mod+Right move right 96
+bindsym Shift+$mod+h move left 96
+bindsym Shift+$mod+j move down 96
+bindsym Shift+$mod+k move up 96
+bindsym Shift+$mod+l move right 96
 
 # - Switch between workspaces - #
 bindsym $mod+Ctrl+1 workspace number 1
@@ -105,8 +111,8 @@ bindsym $mod+Ctrl+7 workspace number 7
 bindsym $mod+Ctrl+8 workspace number 8
 bindsym $mod+Ctrl+9 workspace number 9
 bindsym $mod+Ctrl+0 workspace number 10
-bindsym $mod+Ctrl+Left workspace prev
-bindsym $mod+Ctrl+Right workspace next
+bindsym $mod+Ctrl+h workspace prev
+bindsym $mod+Ctrl+l workspace next
 
 # - Move windows between workspaces - #
 bindsym $mod+1 move container to workspace number 1; workspace number 1

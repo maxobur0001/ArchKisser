@@ -12,13 +12,13 @@
     horizontal_padding = 12
     frame_width = 2
     gap_size = 2
-    corner_radius = 20
+    corner_radius = 30
     font = "JetbrainsMono Nerd Font 11"
 
     icon_theme = "Colloid-Catppuccin"
     enable_recursive_icon_lookup = true
     max_icon_size = 81
-    icon_corner_radius = 20
+    icon_corner_radius = 10
 
     background = "#1e1e2e"
     foreground = "#cdd6f4"
@@ -54,3 +54,10 @@
   urgency = critical
   alignment = center
   min_icon_size = 54
+
+[screenshot]
+  appname = screenshot
+  timeout = 3s
+  urgency = normal
+  alignment = center
+  max_icon_size = 128

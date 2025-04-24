@@ -1,0 +1,5 @@
+#!/bin/bash
+
+screenshot="/tmp/Screenshot $(date "+%Y.%m.%d at %H:%M").png"
+maim "${screenshot}"
+notify-send -i "${screenshot}" -u low -a screenshot "Screenshot saved in clipboard"

@@ -9,7 +9,7 @@ logout="󰍃"
 # Variable passed to rofi
 options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
 
-chosen="$(echo -e "$options" | $rofi_command -p "UP - $uptime" -dmenu -selected-row 0)"
+chosen="$(echo -e "$options" | $rofi_command -dmenu -theme "/home/maxobur0001/.config/rofi/powermenu.rasi" -selected-row 0 -no-show-icons)"
 case $chosen in
     $shutdown)
 			systemctl poweroff
@@ -22,12 +22,11 @@ case $chosen in
       ;;
     $suspend)
 			mpc -q pause
-			amixer set Master mute
 			sh $HOME/.local/bin/lock
 			systemctl suspend
       ;;
     $logout)
-			bspc quit
+			i3-msg exit
 			exit
       ;;
 esac

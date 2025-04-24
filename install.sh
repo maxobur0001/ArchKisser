@@ -15,7 +15,9 @@ fi
 sudo pacman -Syu
 sudo pacman -Sy \
     zoxide \
-    sddm \
+    lightdm \
+    lightdm-gtk-greeter \
+    feh \
     git \
     eza \
     i3-wm \
@@ -46,7 +48,7 @@ ln -sf $(pwd)/* ../
 mv ../.zshrc $HOME
 
 # SystemD services
-sudo systemctl enable sddm 
+sudo systemctl enable lightdm
 
 # Done!
 echo "Done! Reboot to apply settings"
